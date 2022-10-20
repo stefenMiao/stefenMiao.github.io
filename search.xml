@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Leetcode142.环形链表II 双指针法</title>
+      <link href="/posts/256f1857.html"/>
+      <url>/posts/256f1857.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Problem: <a href="https://leetcode.cn/problems/linked-list-cycle-ii/description/">142. 环形链表 II</a></p></blockquote><h1>解题方法</h1><p>设置快指针一次走两步，慢指针一次走一步，开始时快慢指针都指向头结点<br>然后两个指针开始遍历链表，若链表无环，则快指针会走向null，若链表有环，则<strong>快慢指针会相遇</strong><br>慢指针留在相遇点，快指针返回头结点，然后快慢指针同时<strong>一次一步</strong>向后遍历，最后相遇结点即为入环首结点<br><a href="https://leetcode.cn/problems/linked-list-cycle-ii/solutions/12616/linked-list-cycle-ii-kuai-man-zhi-zhen-shuang-zhi-/">详细证明</a></p><h1>复杂度</h1><ul><li><p>时间复杂度: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p></li><li><p>空间复杂度: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p></li></ul><h1>Code</h1><figure class="highlight c++"><figcaption><span>[]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">detectCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        ListNode *fast_p=head;</span><br><span class="line">        ListNode *slow_p=head;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="literal">nullptr</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">       <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">       &#123;</span><br><span class="line">            <span class="keyword">if</span>(fast_p-&gt;next==<span class="literal">nullptr</span>||fast_p-&gt;next-&gt;next==<span class="literal">nullptr</span>) <span class="comment">//注意终止条件</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">            </span><br><span class="line">            fast_p=fast_p-&gt;next-&gt;next;</span><br><span class="line">            slow_p=slow_p-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(fast_p==slow_p)  </span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">       &#125; </span><br><span class="line">       fast_p=head;</span><br><span class="line">       <span class="keyword">while</span>(fast_p!=slow_p)</span><br><span class="line">       &#123;</span><br><span class="line">           fast_p=fast_p-&gt;next;</span><br><span class="line">           slow_p=slow_p-&gt;next;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> fast_p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 链表 </tag>
+            
+            <tag> C++ </tag>
+            
+            <tag> Leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode160.相交链表 双指针判断</title>
       <link href="/posts/a48822be.html"/>
       <url>/posts/a48822be.html</url>
@@ -205,22 +234,22 @@
     
     
     <entry>
-      <title></title>
-      <link href="/css/mycss.css"/>
-      <url>/css/mycss.css</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[/* 首页文章卡片 */#recent-posts > .recent-post-item{    background:rgba(255, 255, 255, 0.9);}/* 首页侧栏卡片 */.card-widget{    background:rgba(255, 255, 255, 0.9)!important;}/* 文章页面正文背景 */div#post{    background: rgba(255, 255, 255, 0.9);}/* 分页页面 */div#page{    background: rgba(255, 255, 255, 0.9);}/* 归档页面 */div#archive{    background: rgba(255, 255, 255, 0.9);}/* 标签页面 */div#tag{    background: rgba(255, 255, 255, 0.9);}/* 分类页面 */div#category{    background: rgba(255, 255, 255, 0.9);}body {    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),        default;}a,img {    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),        default;}/* 彩带 */.card-info-avatar:hover {    background: url(https://cdn.jsdelivr.net/gh/rigodlee/BLOGCDN/img/H3342af90d24b4d62b9bbfec9688ccc25M.gif);}#web_bg {    /* 背景图地址 */    background: url(/img/backg.jpeg);    /* 平铺 */    background-repeat: no-repeat;    /* 背景图大小 */    background-size: cover;}]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title></title>
+      <link href="/css/mycss.css"/>
+      <url>/css/mycss.css</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[/* 首页文章卡片 */#recent-posts > .recent-post-item{    background:rgba(255, 255, 255, 0.9);}/* 首页侧栏卡片 */.card-widget{    background:rgba(255, 255, 255, 0.9)!important;}/* 文章页面正文背景 */div#post{    background: rgba(255, 255, 255, 0.9);}/* 分页页面 */div#page{    background: rgba(255, 255, 255, 0.9);}/* 归档页面 */div#archive{    background: rgba(255, 255, 255, 0.9);}/* 标签页面 */div#tag{    background: rgba(255, 255, 255, 0.9);}/* 分类页面 */div#category{    background: rgba(255, 255, 255, 0.9);}body {    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),        default;}a,img {    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),        default;}/* 彩带 */.card-info-avatar:hover {    background: url(https://cdn.jsdelivr.net/gh/rigodlee/BLOGCDN/img/H3342af90d24b4d62b9bbfec9688ccc25M.gif);}#web_bg {    /* 背景图地址 */    background: url(/img/backg.jpeg);    /* 平铺 */    background-repeat: no-repeat;    /* 背景图大小 */    background-size: cover;}]]></content>
       
     </entry>
     
