@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>编程技巧 异或的使用</title>
+      <link href="/posts/580e593a.html"/>
+      <url>/posts/580e593a.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="异或的性质">异或的性质</h2><p>异或即是<strong>相同为 0，不同为 1</strong></p><ol><li>0^N=N    0 与二进制数 N 进行异或的结果为 N</li><li>N^N=0</li><li>a^b= b^a   交换律</li><li>(a^b)^c=a^(b^c)    结合律</li><li>对于任意多个数异或没有顺序性</li></ol><h2 id="使用异或进行两数交换">使用异或进行两数交换</h2><p>a=a^b;<br>b=a^b;<br>a=a^b;</p><p>若a=x，b=y<br>step1:a=x^y, b=y<br>step2:a=x^y, b=x^y^y=x<br>step3:a=x^y^x=y, b=x<br>必须保证 a 与 b 所指向的内存独立（指向两块不同的内存）</p><h2 id="代码实现">代码实现</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="type">int</span> a;</span><br><span class="line"><span class="type">int</span> b;</span><br><span class="line">cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">a=a^b;</span><br><span class="line">b=a^b;</span><br><span class="line">a=a^b;</span><br><span class="line">cout&lt;&lt;a&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="异或的其他应用">异或的其他应用</h2><p><a href="https://leetcode.cn/problems/single-number/">Leetcode136</a></p><blockquote><p>若每个数组有2个非奇数个数的数a和b，其余的数都为偶数个数，则对数组中的数求异或的结果为output=a^b，然后找到output二进制形式中某个为1的位数，然后对该位为1（或0）的数进行异或得到output2=a or b ，最后output^output2即为另一个数</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程技巧 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> 编程技巧 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode142.环形链表II 双指针法</title>
       <link href="/posts/256f1857.html"/>
       <url>/posts/256f1857.html</url>
