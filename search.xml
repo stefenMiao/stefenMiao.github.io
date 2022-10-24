@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Leetcode958.二叉树的完全性检验 层次遍历实现</title>
+      <link href="/posts/9f6654ea.html"/>
+      <url>/posts/9f6654ea.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Problem: <a href="https://leetcode.cn/problems/check-completeness-of-a-binary-tree/description/">958. 二叉树的完全性检验</a></p></blockquote><h1>完全二叉树性质</h1><ol><li><p>任一结点若<strong>有右孩子而没有左孩子</strong>，则不是完全二叉树<br><img src="/posts/9f6654ea/WechatIMG281.jpeg" alt="example"></p></li><li><p>按层次遍历顺序，第一个左右孩子不双全的结点之后的结点全是叶结点<br><img src="/posts/9f6654ea/WechatIMG282.jpeg" alt="example"></p></li></ol><h1>解题方法</h1><p>设置isLeaf变量记录结点是否为叶节点，当满足性质1后，若右孩子不存在，则isLeaf设置为1<br>其余代码即为<strong>层次遍历</strong>代码（只是在pop时加了判断条件）</p><h1>复杂度</h1><ul><li><p>时间复杂度: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p></li><li><p>空间复杂度: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p></li></ul><h1>Code</h1><figure class="highlight c++"><figcaption><span>[]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isCompleteTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        queue&lt;TreeNode*&gt; que;</span><br><span class="line">        <span class="type">bool</span> isLeaf=<span class="number">0</span>; <span class="comment">//isLeaf为1，则该节点是叶节点</span></span><br><span class="line">        TreeNode* p=root;</span><br><span class="line">        que.<span class="built_in">push</span>(p);</span><br><span class="line">        <span class="keyword">while</span>(!que.<span class="built_in">empty</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            p=que.<span class="built_in">front</span>();</span><br><span class="line">            que.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//条件1：是叶节点但却有孩子   条件2：有右孩子但没有左孩子</span></span><br><span class="line">            <span class="keyword">if</span>((isLeaf&amp;&amp;(p-&gt;left||p-&gt;right)) || (p-&gt;right&amp;&amp;!p-&gt;left))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!p-&gt;right)</span><br><span class="line">            &#123;</span><br><span class="line">                isLeaf=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(p-&gt;left)</span><br><span class="line">            &#123;</span><br><span class="line">                que.<span class="built_in">push</span>(p-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(p-&gt;right)</span><br><span class="line">            &#123;</span><br><span class="line">                que.<span class="built_in">push</span>(p-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> 二叉树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode98.验证二叉搜索树 中序遍历递归实现</title>
       <link href="/posts/3369928f.html"/>
       <url>/posts/3369928f.html</url>
@@ -381,6 +410,17 @@
     
     
     <entry>
+      <title></title>
+      <link href="/css/mycss.css"/>
+      <url>/css/mycss.css</url>
+      
+        <content type="html"><![CDATA[/* 首页文章卡片 */#recent-posts > .recent-post-item{    background:rgba(255, 255, 255, 0.9);}/* 首页侧栏卡片 */.card-widget{    background:rgba(255, 255, 255, 0.9)!important;}/* 文章页面正文背景 */div#post{    background: rgba(255, 255, 255, 0.9);}/* 分页页面 */div#page{    background: rgba(255, 255, 255, 0.9);}/* 归档页面 */div#archive{    background: rgba(255, 255, 255, 0.9);}/* 标签页面 */div#tag{    background: rgba(255, 255, 255, 0.9);}/* 分类页面 */div#category{    background: rgba(255, 255, 255, 0.9);}body {    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),        default;}a,img {    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),        default;}/* 彩带 */.card-info-avatar:hover {    background: url(https://cdn.jsdelivr.net/gh/rigodlee/BLOGCDN/img/H3342af90d24b4d62b9bbfec9688ccc25M.gif);}#web_bg {    /* 背景图地址 */    background: url(/img/backg.jpeg);    /* 平铺 */    background-repeat: no-repeat;    /* 背景图大小 */    background-size: cover;}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>movies</title>
       <link href="/movies/index.html"/>
       <url>/movies/index.html</url>
@@ -397,17 +437,6 @@
       <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/css/mycss.css"/>
-      <url>/css/mycss.css</url>
-      
-        <content type="html"><![CDATA[/* 首页文章卡片 */#recent-posts > .recent-post-item{    background:rgba(255, 255, 255, 0.9);}/* 首页侧栏卡片 */.card-widget{    background:rgba(255, 255, 255, 0.9)!important;}/* 文章页面正文背景 */div#post{    background: rgba(255, 255, 255, 0.9);}/* 分页页面 */div#page{    background: rgba(255, 255, 255, 0.9);}/* 归档页面 */div#archive{    background: rgba(255, 255, 255, 0.9);}/* 标签页面 */div#tag{    background: rgba(255, 255, 255, 0.9);}/* 分类页面 */div#category{    background: rgba(255, 255, 255, 0.9);}body {    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),        default;}a,img {    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),        default;}/* 彩带 */.card-info-avatar:hover {    background: url(https://cdn.jsdelivr.net/gh/rigodlee/BLOGCDN/img/H3342af90d24b4d62b9bbfec9688ccc25M.gif);}#web_bg {    /* 背景图地址 */    background: url(/img/backg.jpeg);    /* 平铺 */    background-repeat: no-repeat;    /* 背景图大小 */    background-size: cover;}]]></content>
       
     </entry>
     
