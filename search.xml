@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Leetcode98.验证二叉搜索树 中序遍历递归实现</title>
+      <link href="/posts/3369928f.html"/>
+      <url>/posts/3369928f.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Problem: <a href="https://leetcode.cn/problems/validate-binary-search-tree/description/">98. 验证二叉搜索树</a></p></blockquote><h1>思路</h1><p>若该二叉树为搜索二叉树，则中序遍历后结点的值应该是递增的，所以考虑修改中序遍历递归实现的代码以达到判断是否为搜索二叉树的目的</p><h1>解题方法</h1><p>设置preValue变量记录中序遍历的到的上一个结点的值<br>对左子树调用函数，若返回0，则整个函数返回false<br>若不返回0，判断当前结点与preValue的大小，若当前结点小于等于preValue则不满足递增，返回false，反之则更新preValue的值为当前结点的值<br>对右子树递归地调用函数</p><h1>复杂度</h1><ul><li><p>时间复杂度: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p></li><li><p>空间复杂度: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p></li></ul><h1>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">long</span> preValue=<span class="number">-1</span>*(<span class="built_in">pow</span>(<span class="number">2</span>,<span class="number">31</span>))<span class="number">-1</span>;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">nullptr</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="type">bool</span> LeftIsBST=<span class="built_in">isValidBST</span>(root-&gt;left);</span><br><span class="line">        <span class="keyword">if</span>(LeftIsBST==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;val&lt;=preValue)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            preValue=root-&gt;val;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">isValidBST</span>(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> 二叉树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>二叉树遍历 非递归实现</title>
       <link href="/posts/e45e5cb2.html"/>
       <url>/posts/e45e5cb2.html</url>
@@ -363,17 +392,6 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>tags</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
@@ -390,6 +408,17 @@
       <url>/css/mycss.css</url>
       
         <content type="html"><![CDATA[/* 首页文章卡片 */#recent-posts > .recent-post-item{    background:rgba(255, 255, 255, 0.9);}/* 首页侧栏卡片 */.card-widget{    background:rgba(255, 255, 255, 0.9)!important;}/* 文章页面正文背景 */div#post{    background: rgba(255, 255, 255, 0.9);}/* 分页页面 */div#page{    background: rgba(255, 255, 255, 0.9);}/* 归档页面 */div#archive{    background: rgba(255, 255, 255, 0.9);}/* 标签页面 */div#tag{    background: rgba(255, 255, 255, 0.9);}/* 分类页面 */div#category{    background: rgba(255, 255, 255, 0.9);}body {    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),        default;}a,img {    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),        default;}/* 彩带 */.card-info-avatar:hover {    background: url(https://cdn.jsdelivr.net/gh/rigodlee/BLOGCDN/img/H3342af90d24b4d62b9bbfec9688ccc25M.gif);}#web_bg {    /* 背景图地址 */    background: url(/img/backg.jpeg);    /* 平铺 */    background-repeat: no-repeat;    /* 背景图大小 */    background-size: cover;}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
