@@ -141,7 +141,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2022-10-30 16:13:13'
+  postUpdate: '2022-10-30 16:21:32'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -234,84 +234,127 @@
 Problem: 295. 数据流的中位数
 
 解题方法
+
 建立大根堆bigHeap和小根堆smallHeap
 更新：新加入一个数num，若大根堆为空则直接加入大根堆；若大根堆不为空，判断num与大根堆堆顶元素的大小关系，若num小于堆顶元素，则加入大根堆，反之加入小根堆
 维护：若大根堆与小根堆的元素个数相差超过1，则元素个数多的堆弹出元素放入少的堆
 
 复杂度
-时间复杂度: $O(n)$
-
-空间复杂度: $O(n)$
 
 
-Code123456789101112131415161718192021222324252627282930313233343536373839404142434445class MedianFinder &#123;private:    priority_queue&lt;int, vector&lt;int&gt;, less&lt;int&gt;&gt; bigHeap;    priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; smallHeap;public:    Median ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/fcba0455.html" title="Leetcode646.最长数对链 贪心实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode646.最长数对链 贪心实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/fcba0455.html" title="Leetcode646.最长数对链 贪心实现">Leetcode646.最长数对链 贪心实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-29T06:53:35.000Z" title="发表于 2022-10-29 14:53:35">2022-10-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">
+时间复杂度: O(n)O(n)O(n)
+
+
+空间复杂度: O(n)O(n)O(n)
+
+
+Code
+123456789101112131415161718192021222324252627282930313233343536373839404142434445class MedianFinder &#123;private:    priority_queue&lt;int, vector&lt;int&gt;, less&lt;int&gt;&gt; bigHeap;    priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; smallHeap; ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/fcba0455.html" title="Leetcode646.最长数对链 贪心实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode646.最长数对链 贪心实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/fcba0455.html" title="Leetcode646.最长数对链 贪心实现">Leetcode646.最长数对链 贪心实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-29T06:53:35.000Z" title="发表于 2022-10-29 14:53:35">2022-10-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">
 Problem: 646. 最长数对链
 
-思路贪心算法，优先选取末尾元素较小的数对（保证后面有更大的空间放更多的数对）
+思路
+贪心算法，优先选取末尾元素较小的数对（保证后面有更大的空间放更多的数对）
 解题方法
+
 将数对按照第二个元素进行升序排序
 定义数对指针指向已选的最后一个数对的末尾元素
 遍历数对数组，若新的数对的首元素大于数对指针（保证数对之间不重叠），则可选数对数量增加
 
 复杂度
-时间复杂度: $O(n)$
-
-空间复杂度: $O(1)$
 
 
-Code1234567891011121314151617181920class Solution &#123;public:    static bool cmp(const vector&lt;int&gt; &amp;a,const vector&lt;int&gt; &amp;b)&#123; //定义排序函数        return a.back()&lt;b.back();  //vector中第二个元素的升序排序    &#125;        int findLongestChain(vector&lt;vector&lt;int&gt;&gt;&amp; pairs) &#123;         ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/3ee9e18d.html" title="Leetcode210.课程表II 拓扑排序"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode210.课程表II 拓扑排序"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/3ee9e18d.html" title="Leetcode210.课程表II 拓扑排序">Leetcode210.课程表II 拓扑排序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-26T08:53:09.000Z" title="发表于 2022-10-26 16:53:09">2022-10-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">
+时间复杂度: O(n)O(n)O(n)
+
+
+空间复杂度: O(1)O(1)O(1)
+
+
+Code
+1234567891011121314151617181920class Solution &#123;public:    static bool cmp(const vector&lt;int&gt; &amp;a,const vector&lt;int&gt; &amp;b)&#123; //定义排序函数        return a.back()&lt;b.back();  //vector中第二个元素的升序排序    &#125;        int findLongestChain(vector&lt;vector&lt;int&gt;&gt;&amp; pai ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/3ee9e18d.html" title="Leetcode210.课程表II 拓扑排序"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode210.课程表II 拓扑排序"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/3ee9e18d.html" title="Leetcode210.课程表II 拓扑排序">Leetcode210.课程表II 拓扑排序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-26T08:53:09.000Z" title="发表于 2022-10-26 16:53:09">2022-10-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">
 Problem: 210. 课程表 II
 
-解题方法建立一个队列初始化保存入度为零的结点若队列不为空，则不断出队，出队结点放入结果向量中保存，将出队结点的入度减一，若出现新的入度为零的结点，则将其入队  
+解题方法
+建立一个队列初始化保存入度为零的结点
+若队列不为空，则不断出队，出队结点放入结果向量中保存，将出队结点的入度减一，若出现新的入度为零的结点，则将其入队
 特殊情况
+
 只有一门课程时，直接返回该课程
 若图中有环，则出队结点数小于总节点数，无法满足选择全部课程，则返回空return &#123;&#125;
 
-Code[]12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576class Solution &#123;public:    typedef struct node&#123;        int num; //编号         int inNum=0; //入度        vector&lt;int&gt; nextNode; //下一个邻接节点    &#125;Node;    //创 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/d2e02684.html" title="Leetcode297.二叉树的序列化与反序列化 先序遍历实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode297.二叉树的序列化与反序列化 先序遍历实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/d2e02684.html" title="Leetcode297.二叉树的序列化与反序列化 先序遍历实现">Leetcode297.二叉树的序列化与反序列化 先序遍历实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-26T02:04:05.000Z" title="发表于 2022-10-26 10:04:05">2022-10-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">
+Code
+[]12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576class Solution &#123;public:    typedef struct node&#123;        int num; //编号         int inNum=0; //入度        vector&lt;int&gt; nextNode; //下一个邻接节点    &#125;Node;    / ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/d2e02684.html" title="Leetcode297.二叉树的序列化与反序列化 先序遍历实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode297.二叉树的序列化与反序列化 先序遍历实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/d2e02684.html" title="Leetcode297.二叉树的序列化与反序列化 先序遍历实现">Leetcode297.二叉树的序列化与反序列化 先序遍历实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-26T02:04:05.000Z" title="发表于 2022-10-26 10:04:05">2022-10-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">
 Problem: 297. 二叉树的序列化与反序列化
 
 解题方法
-序列化：使用先序遍历，将树变为字符串存储，null结点存储为#，用”_”分割  
+
+序列化：使用先序遍历，将树变为字符串存储，null结点存储为#，用&quot;_&quot;分割
 反序列化：对于得到的前序数组，若弹出首元素，若弹出元素为空，则返回null，若不为空，则递归地构建左子树和右子树
 
 坑
+
 要使用atoi函数将string转换为int，必须使用c_str()方法，将string转换为c_str
 使用迭代器删除vector首元素（vec.erase(vec.begin())），必须保证vector不为空
 字符串分割自己写了一个函数实现
 单引号是字符型，双引号是字符串型
 
-Code[]12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485/** * Definition for a binary tree node. * struct TreeNo ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/37e6f34.html" title="Leetcode236.二叉树的最近公共祖先 递归实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode236.二叉树的最近公共祖先 递归实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/37e6f34.html" title="Leetcode236.二叉树的最近公共祖先 递归实现">Leetcode236.二叉树的最近公共祖先 递归实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-25T06:51:26.000Z" title="发表于 2022-10-25 14:51:26">2022-10-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">
+Code
+[]12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485/** * Definition for a binary tree node. * st ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/37e6f34.html" title="Leetcode236.二叉树的最近公共祖先 递归实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode236.二叉树的最近公共祖先 递归实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/37e6f34.html" title="Leetcode236.二叉树的最近公共祖先 递归实现">Leetcode236.二叉树的最近公共祖先 递归实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-25T06:51:26.000Z" title="发表于 2022-10-25 14:51:26">2022-10-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">
 Problem: 236. 二叉树的最近公共祖先
 
-方法1建立哈希表，存储每个结点的父节点建立集合存储p的所有祖先结点在p的祖先结点集合中找有没有q的祖先结点
-Code[]1234567891011121314151617181920212223242526272829303132class Solution &#123;public:    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123;        map&lt;TreeNode*,TreeNode*&gt; faMap;        faMap[root]=root;        getFather(root, faMap);        set&lt;TreeNode*&gt; nodeSet;        TreeNode* cur=p;        while(cur!=root)&#123;            nodeSet.insert(cur);            cur=faMap[c ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/9f6654ea.html" title="Leetcode958.二叉树的完全性检验 层次遍历实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode958.二叉树的完全性检验 层次遍历实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/9f6654ea.html" title="Leetcode958.二叉树的完全性检验 层次遍历实现">Leetcode958.二叉树的完全性检验 层次遍历实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-24T11:49:29.000Z" title="发表于 2022-10-24 19:49:29">2022-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">
+方法1
+建立哈希表，存储每个结点的父节点
+建立集合存储p的所有祖先结点
+在p的祖先结点集合中找有没有q的祖先结点
+Code
+[]1234567891011121314151617181920212223242526272829303132class Solution &#123;public:    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123;        map&lt;TreeNode*,TreeNode*&gt; faMap;        faMap[root]=root;        getFather(root, faMap);        set&lt;TreeNode*&gt; nodeSet;        TreeNode* cur=p;        while(cur!=root)&#123;            nodeSet.insert(cur);            cur=faM ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/9f6654ea.html" title="Leetcode958.二叉树的完全性检验 层次遍历实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode958.二叉树的完全性检验 层次遍历实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/9f6654ea.html" title="Leetcode958.二叉树的完全性检验 层次遍历实现">Leetcode958.二叉树的完全性检验 层次遍历实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-24T11:49:29.000Z" title="发表于 2022-10-24 19:49:29">2022-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">
 Problem: 958. 二叉树的完全性检验
 
 完全二叉树性质
+
+
 任一结点若有右孩子而没有左孩子，则不是完全二叉树
+
+
 
 按层次遍历顺序，第一个左右孩子不双全的结点之后的结点全是叶结点
 
 
-解题方法设置isLeaf变量记录结点是否为叶节点，当满足性质1后，若右孩子不存在，则isLeaf设置为1其余代码即为层次遍历代码（只是在pop时加了判断条件）
+
+解题方法
+设置isLeaf变量记录结点是否为叶节点，当满足性质1后，若右孩子不存在，则isLeaf设置为1
+其余代码即为层次遍历代码（只是在pop时加了判断条件）
 复杂度
-时间复杂度: $O(n)$
-
-空间复杂度: $O(1)$
 
 
-Code[]123456789101112131415161718192021222324252627282930313233343536373839404142434445464748/** * Definition for a binary tree node. * struct TreeNode &#123; *     int val; *     TreeNode *left; *     TreeNode *right; *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125; *  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/3369928f.html" title="Leetcode98.验证二叉搜索树 中序遍历递归实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode98.验证二叉搜索树 中序遍历递归实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/3369928f.html" title="Leetcode98.验证二叉搜索树 中序遍历递归实现">Leetcode98.验证二叉搜索树 中序遍历递归实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-24T10:41:40.000Z" title="发表于 2022-10-24 18:41:40">2022-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">
+时间复杂度: O(n)O(n)O(n)
+
+
+空间复杂度: O(1)O(1)O(1)
+
+
+Code
+[]123456789101112131415161718192021222324252627282930313233343536373839404142434445464748/** * Definition for a binary tree node. * struct TreeNode &#123; *     int val; *     TreeNode *left; *     TreeNode *right; *     TreeNode() : val(0), left(nullptr), right(n ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/3369928f.html" title="Leetcode98.验证二叉搜索树 中序遍历递归实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode98.验证二叉搜索树 中序遍历递归实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/3369928f.html" title="Leetcode98.验证二叉搜索树 中序遍历递归实现">Leetcode98.验证二叉搜索树 中序遍历递归实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-24T10:41:40.000Z" title="发表于 2022-10-24 18:41:40">2022-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">
 Problem: 98. 验证二叉搜索树
 
-思路若该二叉树为搜索二叉树，则中序遍历后结点的值应该是递增的，所以考虑修改中序遍历递归实现的代码以达到判断是否为搜索二叉树的目的
-解题方法设置preValue变量记录中序遍历的到的上一个结点的值对左子树调用函数，若返回0，则整个函数返回false若不返回0，判断当前结点与preValue的大小，若当前结点小于等于preValue则不满足递增，返回false，反之则更新preValue的值为当前结点的值对右子树递归地调用函数
+思路
+若该二叉树为搜索二叉树，则中序遍历后结点的值应该是递增的，所以考虑修改中序遍历递归实现的代码以达到判断是否为搜索二叉树的目的
+解题方法
+设置preValue变量记录中序遍历的到的上一个结点的值
+对左子树调用函数，若返回0，则整个函数返回false
+若不返回0，判断当前结点与preValue的大小，若当前结点小于等于preValue则不满足递增，返回false，反之则更新preValue的值为当前结点的值
+对右子树递归地调用函数
 复杂度
-时间复杂度: $O(n)$
-
-空间复杂度: $O(n)$
 
 
-Code12345678910111213141516171819202122232425262728/** * Definition for a binary tree node. * struct TreeNode &#123; *     int val; *     TreeNode *left; *     TreeNode *right; *     TreeNode() : val(0), left(nullptr), right(nul ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/e45e5cb2.html" title="二叉树遍历 非递归实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二叉树遍历 非递归实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/e45e5cb2.html" title="二叉树遍历 非递归实现">二叉树遍历 非递归实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-24T09:01:05.012Z" title="发表于 2022-10-24 17:01:05">2022-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">先序遍历（根左右）
+时间复杂度: O(n)O(n)O(n)
+
+
+空间复杂度: O(n)O(n)O(n)
+
+
+Code
+12345678910111213141516171819202122232425262728/** * Definition for a binary tree node. * struct TreeNode &#123; *     int val; *     TreeNode *left; *     TreeNode *right; *     TreeNode() : val(0), lef ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/e45e5cb2.html" title="二叉树遍历 非递归实现"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二叉树遍历 非递归实现"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/e45e5cb2.html" title="二叉树遍历 非递归实现">二叉树遍历 非递归实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-24T09:01:05.012Z" title="发表于 2022-10-24 17:01:05">2022-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">先序遍历（根左右）
+
 创建栈 s
 压入根节点
 若栈不为空，则弹栈，打印弹出结点
@@ -320,16 +363,22 @@ Code12345678910111213141516171819202122232425262728/** * Definition for a binary
 若弹出结点没有左右孩子则直接弹栈
 不断循环直到栈空
 
-1234567891011121314151617181920212223void preOrderUnRecur(void) //前序遍历非递归     &#123;        cout&lt;&lt;&quot;preOrderUnRecur&quot;&lt;&lt;endl;        stack&lt;node*&gt; s;        node* p=head;        if(p)        &#123;            s.push(p);            while (!s.empty())            &#123;                p=s.top();                s.pop();                cout&lt;&lt;p-&gt;val&lt;&lt;&#x ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/48d3e6cc.html" title="Rust学习 变量与可变性"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Rust学习 变量与可变性"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/48d3e6cc.html" title="Rust学习 变量与可变性">Rust学习 变量与可变性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-22T07:41:20.000Z" title="发表于 2022-10-22 15:41:20">2022-10-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Rust/">Rust</a></span></div><div class="content">可变性声明变量使用 let 关键字默认情况下，变量是不可变的（immutable）在声明变量前加上 mut 关键字，使变量可变 let mut x=10   
-常量常量与不可变变量的区别  
+1234567891011121314151617181920212223void preOrderUnRecur(void) //前序遍历非递归     &#123;        cout&lt;&lt;&quot;preOrderUnRecur&quot;&lt;&lt;endl;        stack&lt;node*&gt; s;        node* p=head;        if(p)        &#123;            s.push(p);            while (!s.empty())            &#123;                p=s.top();                s.pop();                cout&lt;&lt;p-&gt;val&lt;&lt;&# ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/48d3e6cc.html" title="Rust学习 变量与可变性"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Rust学习 变量与可变性"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/48d3e6cc.html" title="Rust学习 变量与可变性">Rust学习 变量与可变性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-22T07:41:20.000Z" title="发表于 2022-10-22 15:41:20">2022-10-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Rust/">Rust</a></span></div><div class="content">可变性
+声明变量使用 let 关键字
+默认情况下，变量是不可变的（immutable）
+在声明变量前加上 mut 关键字，使变量可变 let mut x=10
+常量
+常量与不可变变量的区别
 
 不可以使用 mut，永远是不可变的
 声明时使用 const 关键字，类型必须被标注 const MAX:int32=100
 常量可以在任何作用域内声明，包括全局作用域
 只可以绑定到常量表达式，无法绑定到函数的调用结果或只能在运行时才能计算出来的值
 
-在程序运行期间，常量在其声明的作用域内一直有效命名规范：使用全大写字母，用下划线隔开
-shadowing（隐藏）可以使用相同名字声明新的变量，新的变量会 shadow 原来的变量  
+在程序运行期间，常量在其声明的作用域内一直有效
+命名规范：使用全大写字母，用下划线隔开
+shadowing（隐藏）
+可以使用相同名字声明新的变量，新的变量会 shadow 原来的变量
 shadow 和把变量标记为 mut 是不一样的
 
 若不使用 let 关键字给非 mut 变量赋值会导致编译错误
@@ -337,22 +386,32 @@ let 声明的同名新变量也是不可变的
 let 声明的同名新变量，类型可以与以前不同
 
 123let a=10; //a=10let a=a+1; //a=11 type:i32let a=&quot;happy&quot;; //type:str
-</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/e1518d3d.html" title="Rust学习 第一个cargo程序"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Rust学习 第一个cargo程序"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/e1518d3d.html" title="Rust学习 第一个cargo程序">Rust学习 第一个cargo程序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-22T03:53:11.000Z" title="发表于 2022-10-22 11:53:11">2022-10-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Rust/">Rust</a></span></div><div class="content">创建项目cargo new name项目名称为 name会创建一个新目录 name  
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/e1518d3d.html" title="Rust学习 第一个cargo程序"><img class="post_bg" src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Rust学习 第一个cargo程序"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/e1518d3d.html" title="Rust学习 第一个cargo程序">Rust学习 第一个cargo程序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-22T03:53:11.000Z" title="发表于 2022-10-22 11:53:11">2022-10-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Rust/">Rust</a></span></div><div class="content">创建项目
+cargo new name
+项目名称为 name
+会创建一个新目录 name
 
 Cargo. toml  :是Cargo的配置格式 [pacage]配置包，[dependencies]配置依赖项
 src  ：放置源代码
 
-Cargo 命令cargo build
-创建可执行文件 ：target&#x2F;debug&#x2F;name
-运行可执行文件 ：.&#x2F;target&#x2F;debug&#x2F;name第一次运行该命令会在顶层目录生成 cargo. lock 文件负责追踪项目依赖的精确版本
+Cargo 命令
+cargo build
+
+创建可执行文件 ：target/debug/name
+运行可执行文件 ：./target/debug/name
+第一次运行该命令会在顶层目录生成 cargo. lock 文件负责追踪项目依赖的精确版本
 
 若加上”–release”为发布版本
 
-编译时会进行优化，提高代码运行速度  
-在target&#x2F;release生成可执行文件
+编译时会进行优化，提高代码运行速度
+在target/release生成可执行文件
 
-cargo run编译+运行若之前已经编译过则直接运行
-cargo check检查代码，保证其能通过编译，但不产生可执行文件比 cargo build 快，可以反复使用以检查代码  
+cargo run
+编译+运行
+若之前已经编译过则直接运行
+cargo check
+检查代码，保证其能通过编译，但不产生可执行文件
+比 cargo build 快，可以反复使用以检查代码
 </div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avat.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ludwig</div><div class="author-info__description">码农..</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/stefenMiao"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/stefenMiao" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Long may the sun shine!</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/c988aa36.html" title="Leetcode295.数据流的中位数 堆实现"><img src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode295.数据流的中位数 堆实现"/></a><div class="content"><a class="title" href="/posts/c988aa36.html" title="Leetcode295.数据流的中位数 堆实现">Leetcode295.数据流的中位数 堆实现</a><time datetime="2022-10-30T07:41:01.000Z" title="发表于 2022-10-30 15:41:01">2022-10-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fcba0455.html" title="Leetcode646.最长数对链 贪心实现"><img src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode646.最长数对链 贪心实现"/></a><div class="content"><a class="title" href="/posts/fcba0455.html" title="Leetcode646.最长数对链 贪心实现">Leetcode646.最长数对链 贪心实现</a><time datetime="2022-10-29T06:53:35.000Z" title="发表于 2022-10-29 14:53:35">2022-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3ee9e18d.html" title="Leetcode210.课程表II 拓扑排序"><img src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode210.课程表II 拓扑排序"/></a><div class="content"><a class="title" href="/posts/3ee9e18d.html" title="Leetcode210.课程表II 拓扑排序">Leetcode210.课程表II 拓扑排序</a><time datetime="2022-10-26T08:53:09.000Z" title="发表于 2022-10-26 16:53:09">2022-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/d2e02684.html" title="Leetcode297.二叉树的序列化与反序列化 先序遍历实现"><img src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode297.二叉树的序列化与反序列化 先序遍历实现"/></a><div class="content"><a class="title" href="/posts/d2e02684.html" title="Leetcode297.二叉树的序列化与反序列化 先序遍历实现">Leetcode297.二叉树的序列化与反序列化 先序遍历实现</a><time datetime="2022-10-26T02:04:05.000Z" title="发表于 2022-10-26 10:04:05">2022-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/37e6f34.html" title="Leetcode236.二叉树的最近公共祖先 递归实现"><img src="/img/top.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode236.二叉树的最近公共祖先 递归实现"/></a><div class="content"><a class="title" href="/posts/37e6f34.html" title="Leetcode236.二叉树的最近公共祖先 递归实现">Leetcode236.二叉树的最近公共祖先 递归实现</a><time datetime="2022-10-25T06:51:26.000Z" title="发表于 2022-10-25 14:51:26">2022-10-25</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
@@ -360,7 +419,7 @@ cargo check检查代码，保证其能通过编译，但不产生可执行文件
             </div>
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Rust/"><span class="card-category-list-name">Rust</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/"><span class="card-category-list-name">数学建模</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="card-category-list-name">数据结构</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/"><span class="card-category-list-name">编程技巧</span><span class="card-category-list-count">1</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 1.1em; color: #999">BFS</a> <a href="/tags/C/" style="font-size: 1.5em; color: #99a9bf">C++</a> <a href="/tags/Leetcode/" style="font-size: 1.42em; color: #99a6b7">Leetcode</a> <a href="/tags/Python/" style="font-size: 1.1em; color: #999">Python</a> <a href="/tags/Rust%E5%AD%A6%E4%B9%A0/" style="font-size: 1.18em; color: #999ca1">Rust学习</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 1.34em; color: #99a3b0">二叉树</a> <a href="/tags/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">优化算法</a> <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 1.1em; color: #999">分治</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 1.1em; color: #999">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 1.1em; color: #999">图</a> <a href="/tags/%E5%A0%86/" style="font-size: 1.1em; color: #999">堆</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 1.1em; color: #999">数学建模</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" style="font-size: 1.1em; color: #999">编程技巧</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">贪心算法</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.26em; color: #999fa8">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 1.1em; color: #999">队列</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">20</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">20</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">7.7k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-10-30T08:13:13.598Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/backg.jpeg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Ludwig</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Say Goodbye..</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 1.1em; color: #999">BFS</a> <a href="/tags/C/" style="font-size: 1.5em; color: #99a9bf">C++</a> <a href="/tags/Leetcode/" style="font-size: 1.42em; color: #99a6b7">Leetcode</a> <a href="/tags/Python/" style="font-size: 1.1em; color: #999">Python</a> <a href="/tags/Rust%E5%AD%A6%E4%B9%A0/" style="font-size: 1.18em; color: #999ca1">Rust学习</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 1.34em; color: #99a3b0">二叉树</a> <a href="/tags/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">优化算法</a> <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 1.1em; color: #999">分治</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 1.1em; color: #999">动态规划</a> <a href="/tags/%E5%9B%BE/" style="font-size: 1.1em; color: #999">图</a> <a href="/tags/%E5%A0%86/" style="font-size: 1.1em; color: #999">堆</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 1.1em; color: #999">数学建模</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" style="font-size: 1.1em; color: #999">编程技巧</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">贪心算法</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.26em; color: #999fa8">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 1.1em; color: #999">队列</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">20</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">20</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">7.9k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-10-30T08:21:32.178Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/backg.jpeg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Ludwig</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Say Goodbye..</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")
