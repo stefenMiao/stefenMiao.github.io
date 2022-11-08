@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Leetcode739.每日温度 单调栈</title>
+      <link href="/posts/10fcbdcb.html"/>
+      <url>/posts/10fcbdcb.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Problem: <a href="https://leetcode.cn/problems/daily-temperatures/description/">739. 每日温度</a></p></blockquote><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>求两侧距离<strong>最近</strong>的首个比当前元素大（或小）的元素使用<strong>单调栈</strong>解决</p><h1 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h1><p>单调栈中<strong>保存索引</strong>（索引能蕴含更多信息）<br>若新元素小于等于栈顶元素，则直接进栈<br>反之若大于，则不断弹出栈中比新元素小的元素，弹出元素右边离它最近的比它大的元素就是新元素，以此来清算</p><h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><ul><li><p>时间复杂度: $O(n)$</p></li><li><p>空间复杂度: $O(n)$</p></li></ul><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><figcaption><span>[]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dailyTemperatures</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; temperatures)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">res</span><span class="params">(temperatures.size(),<span class="number">0</span>)</span></span>;<span class="comment">//数组初始化全为0，可以省略最后栈中剩余元素的赋0值</span></span><br><span class="line">        stack&lt;<span class="type">int</span>&gt; stk;</span><br><span class="line">        stk.<span class="built_in">push</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;temperatures.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(temperatures[i]&lt;=temperatures[stk.<span class="built_in">top</span>()])&#123;</span><br><span class="line">                stk.<span class="built_in">push</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">while</span>(!stk.<span class="built_in">empty</span>()&amp;&amp;temperatures[i]&gt;temperatures[stk.<span class="built_in">top</span>()])&#123;</span><br><span class="line">                    res[stk.<span class="built_in">top</span>()]=i-stk.<span class="built_in">top</span>();</span><br><span class="line">                    stk.<span class="built_in">pop</span>();</span><br><span class="line">                &#125;</span><br><span class="line">                stk.<span class="built_in">push</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> 栈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode239.滑动窗口最大值 双端单调队列</title>
       <link href="/posts/5e16b3a9.html"/>
       <url>/posts/5e16b3a9.html</url>
@@ -51,9 +80,9 @@
             
             <tag> C++ </tag>
             
-            <tag> DFS </tag>
-            
             <tag> Leetcode </tag>
+            
+            <tag> DFS </tag>
             
         </tags>
       
@@ -200,9 +229,9 @@
             
             <tag> Leetcode </tag>
             
-            <tag> 队列 </tag>
-            
             <tag> 图 </tag>
+            
+            <tag> 队列 </tag>
             
             <tag> BFS </tag>
             
@@ -474,11 +503,11 @@
       
         <tags>
             
+            <tag> 链表 </tag>
+            
             <tag> C++ </tag>
             
             <tag> Leetcode </tag>
-            
-            <tag> 链表 </tag>
             
         </tags>
       
@@ -503,11 +532,11 @@
       
         <tags>
             
+            <tag> 链表 </tag>
+            
             <tag> C++ </tag>
             
             <tag> Leetcode </tag>
-            
-            <tag> 链表 </tag>
             
         </tags>
       
@@ -532,11 +561,11 @@
       
         <tags>
             
+            <tag> 链表 </tag>
+            
             <tag> C++ </tag>
             
             <tag> Leetcode </tag>
-            
-            <tag> 链表 </tag>
             
         </tags>
       
@@ -590,11 +619,11 @@
       
         <tags>
             
+            <tag> 链表 </tag>
+            
             <tag> C++ </tag>
             
             <tag> Leetcode </tag>
-            
-            <tag> 链表 </tag>
             
         </tags>
       
@@ -677,22 +706,11 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>movies</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
-      
-        <content type="html"><![CDATA[<div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/1292233">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p529908155.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p529908155.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>发条橙AClockworkOrange(1971)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>斯坦利·库布里克</span></div>            <div class="douban-card-item"><span>主演: </span><span>马尔科姆·麦克道威尔/帕特里克·马基</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>1971-12-19(纽约首映)</span></div>            <div class="douban-card-item"><span>评分: </span><span>8.6</span></div>        </div>    </a></div><div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/1303460">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1078004649.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1078004649.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>战栗黑洞IntheMouthofMadness(1994)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>约翰·卡朋特</span></div>            <div class="douban-card-item"><span>主演: </span><span>山姆·尼尔/朱莉·卡门</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>1994-12-10(黑色电影节)</span></div>            <div class="douban-card-item"><span>评分: </span><span>7.8</span></div>        </div>    </a></div><div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/1291557">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1910828286.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1910828286.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>花样年华花樣年華(2000)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>王家卫</span></div>            <div class="douban-card-item"><span>主演: </span><span>梁朝伟/张曼玉</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>2000-09-29(中国香港)</span></div>            <div class="douban-card-item"><span>评分: </span><span>8.7</span></div>        </div>    </a></div><div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/1291999">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p792381411.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p792381411.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>重庆森林重慶森林(1994)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>王家卫</span></div>            <div class="douban-card-item"><span>主演: </span><span>林青霞/金城武</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>1994-07-14(中国香港)</span></div>            <div class="douban-card-item"><span>评分: </span><span>8.8</span></div>        </div>    </a></div><div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/3011308">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p1592298962.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p1592298962.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>孤儿怨Orphan(2009)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>佐米·希尔拉</span></div>            <div class="douban-card-item"><span>主演: </span><span>维拉·法米加/彼得·萨斯加德</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>2009-07-24(美国/加拿大)</span></div>            <div class="douban-card-item"><span>评分: </span><span>8.2</span></div>        </div>    </a></div><div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/3604148">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2452537144.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2452537144.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>小丑回魂It(2017)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>安德斯·穆斯切蒂</span></div>            <div class="douban-card-item"><span>主演: </span><span>比尔·斯卡斯加德/杰登·马泰尔</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>2017-08-29(伦敦恐怖电影节)</span></div>            <div class="douban-card-item"><span>评分: </span><span>7.4</span></div>        </div>    </a></div>]]></content>
       
     </entry>
     
@@ -710,9 +728,20 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>movies</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[<div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/1292233">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p529908155.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p529908155.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>发条橙AClockworkOrange(1971)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>斯坦利·库布里克</span></div>            <div class="douban-card-item"><span>主演: </span><span>马尔科姆·麦克道威尔/帕特里克·马基</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>1971-12-19(纽约首映)</span></div>            <div class="douban-card-item"><span>评分: </span><span>8.6</span></div>        </div>    </a></div><div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/1303460">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1078004649.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1078004649.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>战栗黑洞IntheMouthofMadness(1994)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>约翰·卡朋特</span></div>            <div class="douban-card-item"><span>主演: </span><span>山姆·尼尔/朱莉·卡门</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>1994-12-10(黑色电影节)</span></div>            <div class="douban-card-item"><span>评分: </span><span>7.8</span></div>        </div>    </a></div><div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/1291557">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1910828286.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1910828286.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>花样年华花樣年華(2000)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>王家卫</span></div>            <div class="douban-card-item"><span>主演: </span><span>梁朝伟/张曼玉</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>2000-09-29(中国香港)</span></div>            <div class="douban-card-item"><span>评分: </span><span>8.7</span></div>        </div>    </a></div><div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/1291999">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p792381411.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p792381411.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>重庆森林重慶森林(1994)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>王家卫</span></div>            <div class="douban-card-item"><span>主演: </span><span>林青霞/金城武</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>1994-07-14(中国香港)</span></div>            <div class="douban-card-item"><span>评分: </span><span>8.8</span></div>        </div>    </a></div><div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/3011308">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p1592298962.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p1592298962.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>孤儿怨Orphan(2009)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>佐米·希尔拉</span></div>            <div class="douban-card-item"><span>主演: </span><span>维拉·法米加/彼得·萨斯加德</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>2009-07-24(美国/加拿大)</span></div>            <div class="douban-card-item"><span>评分: </span><span>8.2</span></div>        </div>    </a></div><div class="douban-card-block">    <a class="douban-card" href="https://movie.douban.com/subject/3604148">        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2452537144.jpg');"></div>        <div class="douban-card-left">            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2452537144.jpg');"></div>            <div class="douban-card-status">灯影绰约</div>        </div>        <div class="douban-card-right">            <div class="douban-card-item"><span>电影名: </span><strong>小丑回魂It(2017)</strong></div>            <div class="douban-card-item"><span>导演: </span><span>安德斯·穆斯切蒂</span></div>            <div class="douban-card-item"><span>主演: </span><span>比尔·斯卡斯加德/杰登·马泰尔</span></div>            <div class="douban-card-item"><span>上映时间: </span><span>2017-08-29(伦敦恐怖电影节)</span></div>            <div class="douban-card-item"><span>评分: </span><span>7.4</span></div>        </div>    </a></div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
