@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>二分查找</title>
+      <link href="/posts/e8eb0481.html"/>
+      <url>/posts/e8eb0481.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Problem: <a href="https://leetcode.cn/problems/binary-search/description/">704. 二分查找</a></p></blockquote><h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><p>在<strong>有序</strong>数组中查找特定值的元素，并返回元素的下标</p><h1 id="数组越界的条件"><a href="#数组越界的条件" class="headerlink" title="数组越界的条件"></a>数组越界的条件</h1><p><img src="/posts/e8eb0481/image.png" alt="Alt text"></p><h2 id="双闭区间"><a href="#双闭区间" class="headerlink" title="双闭区间"></a>双闭区间</h2><p>考虑查找不到36的情况，最后i会指向下标8，j会指向下标9，则middle为$\frac{8+9}{2}$向下取整，即为8，仍不满足<br>i++，此时i&#x3D;&#x3D;j为9，由于双闭区间的范围<strong>不会超出数组合法范围</strong>，所以可以满足i&#x3D;&#x3D;j，所以循环结束的条件为i&gt;j</p><h2 id="左闭右开区间"><a href="#左闭右开区间" class="headerlink" title="左闭右开区间"></a>左闭右开区间</h2><p>同理，当两指针移动到最边缘时，若i&#x3D;&#x3D;j数组将会越界，所以循环结束条件为i&#x3D;&#x3D;j</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> 代码随想录 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>孩子们，我回来了</title>
       <link href="/posts/91cfe253.html"/>
       <url>/posts/91cfe253.html</url>
